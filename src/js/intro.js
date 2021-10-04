@@ -1,37 +1,33 @@
-// const date = new Date();
-// console.log(date.getTime());
 
-const timer = {
-    start(){
-        this.startTime = Date.now();
+
+
+
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    const success = Math.random() > 0.3;
+
+    if(success){
+        resolve('YES')
+    
+    } else{
+        reject('NO')
+    }
         
-        this.timerId = setInterval(()=>{
-console.log('worck!');
-        },1000);
-    },
-};
-
-timer.start();
+},1000)
+});
 
 
-// const myCode = (time)=>
-//     console.log(
-//     `Время идет ${time}ms ${Date.now()}`);
+console.log('beafore')
 
-//     let counter = 0;
-//     let pp = 0
-
-// const interval = setInterval(()=>{
-//     if(counter <10){
-//         console.log('Подписка на рассылку');
-//     counter += 1;
-//     console.log(counter);
-//     } else{
-//         clearInterval(interval);
-//         console.log('END')
-//     }
-//     console.log(`ведем счет  ${pp+=1}`)
-// },1000);
+const onSucces = message => {
+    console.log(message);
+    };
+const onError =  error => {
+    console.error(`Error - ${error}`);
+    };   
 
 
+promise.then(onSucces, onError);
 
+
+console.log('after')
